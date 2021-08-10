@@ -19,6 +19,6 @@ for twin in time_windows:
         #spec_ind = -2.0
         command = f'python {script} {twin} {spec_ind} {counter}'
         job_id = f'{jobbase}_{counter}'
-        print(f'JOB {job_id} /data/condor_builds/users/blaufuss/umd_computing_examples/condor/dagman/submit.sub')
+        print(f'JOB {job_id} {os.getcwd()}/submit.sub')
         print(f'VARS {job_id} JOBNAME="{job_id}" command="{command}"')
         counter += 1
