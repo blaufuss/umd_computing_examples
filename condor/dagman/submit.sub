@@ -13,23 +13,24 @@
 #        /data/i3store0/ OR /data/i3scratch0/
 ################################################################
 
-## Jobs requiring more than 1GB of memory or 1CPU can add:
-#request_cpus = <num_cpus>
-#request_memory = 5
-#<mem_in_MB> (default 1GB in umd, 2GB in wisc)
-#request_disk = <disk_in_KB>
-
 # Run the environment script from icetray before anything else
-#executable = /data/condor_builds/users/blaufuss/combo/stable/build/env-shell.sh
-executable = /cvmfs/icecube.opensciencegrid.org/py3-v4.1.0/Ubuntu_18.04_x86_64/metaprojects/combo/V01-00-00/env-shell.sh
+executable = $(executable)
+Arguments = "$(args)"
+
 # Where the log, out, err files will live
-basedir     = /data/condor_builds/users/blaufuss/umd_computing_examples/condor/dagman/
-output      = $(basedir)$(Jobname).$(Cluster).out
-error       = $(basedir)$(Jobname).$(Cluster).err
-should_transfer_files = YES
+output      = $(logfile)
+error       = $(logfile)
+
+should_transfer_files = NO
 
 # Only 1 log file for all jobs
-log = /data/condor_builds/users/blaufuss/umd_computing_examples/condor/dagman/$(Jobname).log
+# "log" holds the information about how Condor is assigning the job
+log = $(logfile)
+
+## Jobs requiring more than 1GB of memory or 1CPU can add:
+request_cpus = 1
+request_memory = 2GB
+request_disk = 1GB
 
 # Other condor stuff
 notification   = never
@@ -37,6 +38,5 @@ getenv         = true
 universe       = vanilla
 
 # Submit !
-Arguments = $(command)
 queue
 
