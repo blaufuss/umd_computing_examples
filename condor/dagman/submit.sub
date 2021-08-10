@@ -14,19 +14,18 @@
 ################################################################
 
 # Run the environment script from icetray before anything else
-executable = /cvmfs/icecube.opensciencegrid.org/py3-v4.1.0/Ubuntu_18.04_x86_64/metaprojects/combo/V01-00-00/env-shell.sh
+executable = $(executable)
 Arguments = "$(args)"
 
 # Where the log, out, err files will live
-basedir     = /data/condor_builds/users/blaufuss/umd_computing_examples/condor/dagman/
-output      = $(basedir)/$(Jobname).out
-error       = $(basedir)/$(Jobname).err
+output      = $(logfile)
+error       = $(logfile)
 
 should_transfer_files = NO
 
 # Only 1 log file for all jobs
 # "log" holds the information about how Condor is assigning the job
-log = $(logdir)/$(Jobname).log
+log = $(logfile)
 
 ## Jobs requiring more than 1GB of memory or 1CPU can add:
 request_cpus = 1
@@ -39,6 +38,5 @@ getenv         = true
 universe       = vanilla
 
 # Submit !
-Arguments = $(command)
 queue
 

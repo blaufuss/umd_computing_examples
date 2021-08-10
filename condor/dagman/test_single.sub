@@ -1,0 +1,22 @@
+# Unix submit description file
+# sleep.sub -- simple sleep job
+universe		= vanilla
+getenv			= True
+
+executable              = test_script.py
+
+log                     = Busy.log
+output                  = Busy.$(Process).out
+error                   = Busy.$(Process).error
+
+should_transfer_files   = Yes
+when_to_transfer_output = ON_EXIT
+
+arguments		= "-o test1.npy --gaussian"
+queue
+
+arguments		= "-o test2.npy --gaussian"
+queue
+
+arguments		= "-o test3.npy"
+queue
