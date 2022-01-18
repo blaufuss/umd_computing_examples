@@ -11,7 +11,7 @@ Host pa-pub
 Host pub
   HostName pub.icecube.wisc.edu
 ### The hosts on dedicated private subets
-Host condor00
+Host condor00 jupyter
   # Specific User if your username on remote system is different than local one
   #User remote_username
   ForwardAgent yes

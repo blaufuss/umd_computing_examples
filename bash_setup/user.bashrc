@@ -17,12 +17,10 @@ fi
 if [ -f /etc/bash_completion ]; then
         . /etc/bash_completion
 fi
+
 #some useful aliases:
 alias h='history | more'
 alias j='jobs -l'
-alias screen='TERM=screen screen'
 alias condorq='condor_q -all -nobatch'
-alias cstat='condor_status -constraint "PartitionableSlot =?= TRUE" -format "%32s" Name -format "%6d" TotalSlotCpus -format "%6d" Cpus -format "%5d%%" "((TotalSlotCpus - Cpus) / (TotalSlotCpus * 1.0)) * 10
-0" -format "%8d" TotalSlotMemory -format "%8d" Memory -format "%5d%%" "((TotalSlotMemory - Memory) / (TotalSlotMemory * 1.0)) * 100" -format " %4.2f" TotalLoadAvg -format "%3d" DetectedGPUs -format "\n" TR
-UE'
+alias cstat='condor_status -constraint "PartitionableSlot =?= TRUE" -format "%32s" Name -format "%6d" TotalSlotCpus -format "%6d" Cpus -format "%5d%%" "((TotalSlotCpus - Cpus) / (TotalSlotCpus * 1.0)) * 100" -format "%8d" TotalSlotMemory -format "%8d" Memory -format "%5d%%" "((TotalSlotMemory - Memory) / (TotalSlotMemory * 1.0)) * 100" -format " %4.2f" TotalLoadAvg -format "%3d" DetectedGPUs -format "\n" TRUE'
 ff () { find . -name ${1} -print ; }

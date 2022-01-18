@@ -5,4 +5,3 @@ Some example setup files for using UMD computing.
 * An example Jupyter notebook
 * Example HT condor job files 
 
-This is new material

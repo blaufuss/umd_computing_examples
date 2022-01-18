@@ -12,13 +12,11 @@ export EDITOR=vi
 #export EDITOR=emacs
 export RSYNC_RSH=rsh
 ## IceCube specific
-export SVN=http://code.icecube.wisc.edu/svn
-export SVN_EDITOR=vi
 
 ## CVMFS setup.
-if [ -f /cvmfs/icecube.opensciencegrid.org/py3-v4.1.0/setup.sh ]; then
+if [ -f /cvmfs/icecube.opensciencegrid.org/py3-v4.1.1/setup.sh ]; then
 	echo "Cvmfs setup..."
-	eval `/cvmfs/icecube.opensciencegrid.org/py3-v4.1.0/setup.sh`
+	eval `/cvmfs/icecube.opensciencegrid.org/py3-v4.1.1/setup.sh`
 else
 	echo "No cvmfs"
 fi
