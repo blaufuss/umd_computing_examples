@@ -1,9 +1,9 @@
 # Unix submit description file
 # sleep.sub -- simple sleep job
 universe		= vanilla
-getenv			= True
-executable              = busy.py
-#executable              = busy.sh
+#getenv			= True
+#executable              = busy.py
+executable              = busy.sh
 log                     = Busy.log
 output                  = Busy.$(Process).out
 error                   = Busy.$(Process).error

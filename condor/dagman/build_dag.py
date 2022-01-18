@@ -6,7 +6,7 @@
 import numpy as np
 
 jobbase = 'stacked_sens_test'
-script = '/data/condor_builds/users/blaufuss/umd_computing_examples/jupyter/stacked_sensitivity_refactor.py'
+script = '/data/condor_builds/users/blaufuss/umd_computing_examples/jupyter/converted/stacked_sensitivity_refactor.py'
 
 counter = 0
 
