@@ -1,24 +1,37 @@
 #!/usr/bin/env python
 
-#Let's make a dag.
-# ./build_dag.py > newdag.dag
-# then hand it to condor
-import numpy as np
+# test_script.py [-h] -o OUTFILE [-p PLOTFILE] [-n NVALUES] [--gaussian]
+# Want to run 100 files with 10000 values each with gaussian
+# + 100 files with 10000 values each with uniform
 
-jobbase = 'stacked_sens_test'
-script = '/data/condor_builds/users/blaufuss/umd_computing_examples/jupyter/converted/stacked_sensitivity_refactor.py'
+executable = "/data/condor_builds/users/mlarson/umd_workshop/umd_computing_examples/condor/dagman/test_script.py"
+sub_name = "/data/condor_builds/users/mlarson/umd_workshop/umd_computing_examples/condor/dagman/submit.sub"
+logdir = "/data/condor_builds/users/mlarson/umd_workshop/umd_computing_examples/condor/dagman/logs/"
+outfile_dir = "/data/condor_builds/users/mlarson/umd_workshop/umd_computing_examples/condor/dagman/output/"
 
-counter = 0
+dagman = ""
 
-time_windows = np.logspace(1,6,6)
-spectra = np.linspace(-3.5,-1,11)
+for gaussian in [True, False]:
+    for i in range(100):
+        if gaussian: job_name = "gaussian_"
+        else: job_name = "uniform_"
 
-for twin in time_windows:
-    for spec_ind in spectra:
-        #twin = 100
-        #spec_ind = -2.0
-        command = f'python {script} {twin} {spec_ind} {counter}'
-        job_id = f'{jobbase}_{counter}'
-        print(f'JOB {job_id} /data/condor_builds/users/blaufuss/umd_computing_examples/condor/dagman/submit.sub')
-        print(f'VARS {job_id} JOBNAME="{job_id}" command="{command}"')
-        counter += 1
+        job_name += str(i)
+        dagman += f"JOB {job_name} {sub_name}\n"
+        dagman += f"VARS {job_name} "
+        dagman += f"executable=\"{executable}\" "
+        dagman += f"args=\""
+        dagman += f" -o {outfile_dir}{job_name}.npy "
+        dagman += f" -p {outfile_dir}{job_name}.pdf "
+        dagman += f" -n 10000 "
+        if gaussian:
+            dagman += " --gaussian"
+        dagman += "\""
+
+        dagman += f" logfile=\"{logdir}{job_name}.log\""
+
+        dagman += "\n"
+
+
+with open("my_dagman.dag", "w") as f:
+    f.write(dagman)
