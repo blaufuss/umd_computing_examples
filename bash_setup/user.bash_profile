@@ -14,9 +14,9 @@ export RSYNC_RSH=rsh
 ## IceCube specific
 
 ## CVMFS setup.
-if [ -f /cvmfs/icecube.opensciencegrid.org/py3-v4.1.1/setup.sh ]; then
+if [ -f /cvmfs/icecube.opensciencegrid.org/py3-v4.2.1/setup.sh ]; then
 	echo "Cvmfs setup..."
-	eval `/cvmfs/icecube.opensciencegrid.org/py3-v4.1.1/setup.sh`
+	eval `/cvmfs/icecube.opensciencegrid.org/py3-v4.2.1/setup.sh`
 else
 	echo "No cvmfs"
 fi
