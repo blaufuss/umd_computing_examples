@@ -4,10 +4,11 @@
 # Want to run 100 files with 10000 values each with gaussian
 # + 100 files with 10000 values each with uniform
 
-executable = "/data/condor_builds/users/mlarson/umd_workshop/umd_computing_examples/condor/dagman/test_script.py"
-sub_name = "/data/condor_builds/users/mlarson/umd_workshop/umd_computing_examples/condor/dagman/submit.sub"
-logdir = "/data/condor_builds/users/mlarson/umd_workshop/umd_computing_examples/condor/dagman/logs/"
-outfile_dir = "/data/condor_builds/users/mlarson/umd_workshop/umd_computing_examples/condor/dagman/output/"
+path = "/data/condor_builds/users/blaufuss/umd_computing_examples/condor/dagman/"
+executable = path + "test_script.py"
+sub_name = path + "submit.sub"
+logdir = path + "logs/"
+outfile_dir = path + "output/"
 
 dagman = ""
 
