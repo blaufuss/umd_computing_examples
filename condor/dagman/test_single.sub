@@ -5,9 +5,9 @@ getenv			= True
 
 executable              = test_script.py
 
-log                     = Busy.log
-output                  = Busy.$(Process).out
-error                   = Busy.$(Process).error
+log                     = Simple.log
+output                  = Simple.$(Process).out
+error                   = Simple.$(Process).error
 
 should_transfer_files   = Yes
 when_to_transfer_output = ON_EXIT
