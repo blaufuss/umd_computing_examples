@@ -1,21 +1,17 @@
 # Unix submit description file
 # sleep.sub -- simple sleep job
 universe		= vanilla
-#getenv			= True
-#executable              = busy.py
+getenv			= True
 executable              = busy.sh
 log                     = Busy.log
 output                  = Busy.$(Process).out
 error                   = Busy.$(Process).error
-should_transfer_files   = Yes
-when_to_transfer_output = ON_EXIT
 #request_cpus = 5
+#request_GPUs = 1
 #request_memory = 5GB
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
 
-arguments		= 500
-queue 10
+arguments		= 1500
+queue 450
 
-arguments		= 700
-queue
-arguments 		= 800
-queue 5
